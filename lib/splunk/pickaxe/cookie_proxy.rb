@@ -6,6 +6,7 @@ module Splunk
       @@cookies ||= nil
 
       def request(req, body = nil, &block)  # :yield: +response+
+        req.read_timeout = 500
         if @@cookies 
           req['Cookie'] = @@cookies
         end
